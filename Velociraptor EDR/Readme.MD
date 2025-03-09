@@ -35,21 +35,21 @@ Follow the interactive prompts to configure:
 
 Follow the interactive prompts to configure:
 
-Select Linux
-Press Enter
-Choose Self-signed SSL
-Enter (localhost)
-Enter (8000)
-Enter (8889)
-Select No
-Select No
-Choose a username and password
-Select none
-Set log directory to (opt/velociraptor/logs)
-Select No
-Save the configurations:
-Server Config: (server.config.yaml)
-Client Config: (client.config.yaml)
+- Select Linux
+- Press Enter
+- Choose Self-signed SSL
+- Enter (localhost)
+- Enter (8000)
+- Enter (8889)
+- Select No
+- Select No
+- Choose a username and password
+- Select none
+- Set log directory to (opt/velociraptor/logs)
+- Select No
+- Save the configurations:
++ Server Config: (server.config.yaml)
++ Client Config: (client.config.yaml)
 
 ### 3️⃣ Create the server package
 on linux:  
