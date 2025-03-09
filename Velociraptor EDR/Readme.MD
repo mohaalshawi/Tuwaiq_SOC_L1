@@ -33,16 +33,25 @@ Run the following command to generate the initial configuration:
 
 Follow the interactive prompts to configure:
 
-- Server or Client: Choose "Server" for a standalone setup
-- Hostname/IP: Enter the public IP or domain of your server
-- Certificates: Self-signed certificates will be generated
-- Data Storage: Choose a directory for storing logs and collected data
+- select Linux
+- click enter
+- Self-signed SSL 
+- (localhost)
+- (8000)
+- (8889) 
+- No
+- No
+- none
+- (opt/velociraptor/logs)
+- No
+- (server.config.yaml)
+- (client.config.yaml)
 
 
 ### 3️⃣ Start the Velociraptor Server
 On Linux: 
 ```bash
-./velociraptor --config server.config.yaml frontend
+sudo ./velociraptor --config server.config.yaml frontend
 ```
 
 ### 4️⃣ Access the Web Interface
