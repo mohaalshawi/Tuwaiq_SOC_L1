@@ -41,6 +41,7 @@ Follow the interactive prompts to configure:
 - (8889) 
 - No
 - No
+- select username and password
 - none
 - (opt/velociraptor/logs)
 - No
