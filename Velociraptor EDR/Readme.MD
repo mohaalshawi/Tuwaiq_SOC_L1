@@ -28,7 +28,7 @@ chmod +x velociraptor
 ### 2️⃣ Initialize the Velociraptor Configuration
 Run the following command to generate the initial configuration:
 ```bash
-./velociraptor config generate -i
+ ./velociraptor config generate -i
 ```
 
 Follow the interactive prompts to configure:
