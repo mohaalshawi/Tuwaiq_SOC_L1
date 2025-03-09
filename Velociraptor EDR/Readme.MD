@@ -22,12 +22,14 @@ Download the appropriate binary for your system:
 ```bash
 # Linux (64-bit)
 wget https://github.com/VelociraptorApp/Velociraptor/releases/latest/download/velociraptor-linux-amd64 -O velociraptor
-chmod +x velociraptor```
+chmod +x velociraptor
+```
 
 2️⃣ Initialize the Velociraptor Configuration
 Run the following command to generate the initial configuration:
 ```bash
-./velociraptor config generate -i```
+./velociraptor config generate -i
+```
 
 Follow the interactive prompts to configure:
 
