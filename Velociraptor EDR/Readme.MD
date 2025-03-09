@@ -91,6 +91,9 @@ To monitor endpoints, install the Velociraptor agent on target machines.
 Windows Agent Installation
 ```powershell
 Invoke-WebRequest -Uri "https://github.com/Velocidex/velociraptor/releases/download/v0.73/velociraptor-v0.73.3-windows-amd64.exe" -OutFile "velociraptor.exe"
+
+edit: client.config.yaml "  server_urls:
+  - https://<Linux_Host_IP>:8000/"
 .\velociraptor.exe --config client.config.yaml
 ```
 
