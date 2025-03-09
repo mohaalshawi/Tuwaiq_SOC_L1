@@ -63,9 +63,19 @@ On Linux:
 chmod +x velociraptor_server_0.73.2_amd64.deb
 sudo dpkg -i velociraptor_server_0.73.2_amd64.deb
 sudo systemctl start velociraptor_server
+sudo systemctl status velociraptor_server
 ```
 
-### 5️⃣ Access the Web Interface
+### 5️⃣ the service will show FAILURE=1
+folow the below to fix it
+```bash
+sudo mkdir -p /opt/velociraptor/logs
+sudo chown -R root:root /opt/velociraptor
+sudo chmod -R 777 /opt/velociraptor/logs
+sudo systemctl restart velociraptor_server
+```
+
+### 6️⃣ Access the Web Interface
 Once the server is running, access the web UI:
 
 
@@ -75,7 +85,7 @@ https://localhost:8889
 Use the credentials generated during the setup.
 
 
-### 6️⃣ Deploying Velociraptor Agents (Clients)
+### 7️⃣ Deploying Velociraptor Agents (Clients)
 To monitor endpoints, install the Velociraptor agent on target machines.
 
 Windows Agent Installation
