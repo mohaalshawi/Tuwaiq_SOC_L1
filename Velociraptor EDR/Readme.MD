@@ -38,3 +38,17 @@ Follow the interactive prompts to configure:
 - Certificates: Self-signed certificates will be generated
 - Data Storage: Choose a directory for storing logs and collected data
 
+
+### 3️⃣ Start the Velociraptor Server
+On Linux:
+bash```
+./velociraptor --config server.config.yaml frontend
+```
+
+### 4️⃣ Access the Web Interface
+Once the server is running, access the web UI:
+
+cpp```
+https://<YOUR_SERVER_IP>:8889
+```
+Use the credentials generated during the setup.
