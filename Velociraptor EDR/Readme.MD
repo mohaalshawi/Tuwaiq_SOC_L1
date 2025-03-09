@@ -65,7 +65,7 @@ Invoke-WebRequest -Uri "https://github.com/Velocidex/velociraptor/releases/downl
 ```
 
 
-### 📚 Additional Resources
-### 📖 Official Documentation: https://www.velociraptor.app/docs/
-### 📢 Community Support: https://github.com/VelociraptorApp/Velociraptor/discussions
-#### 🚀 Congratulations! You’ve successfully installed Velociraptor EDR. 🎯
+## 📚 Additional Resources
+📖 Official Documentation: https://www.velociraptor.app/docs/
+📢 Community Support: https://github.com/VelociraptorApp/Velociraptor/discussions
+### 🚀 Congratulations! You’ve successfully installed Velociraptor EDR. 🎯
