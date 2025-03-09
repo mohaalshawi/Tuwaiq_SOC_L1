@@ -48,7 +48,7 @@ bash```
 ### 4️⃣ Access the Web Interface
 Once the server is running, access the web UI:
 
-cpp```
+bash```
 https://<YOUR_SERVER_IP>:8889
 ```
 Use the credentials generated during the setup.
