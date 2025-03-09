@@ -23,3 +23,8 @@ Download the appropriate binary for your system:
 # Linux (64-bit)
 wget https://github.com/VelociraptorApp/Velociraptor/releases/latest/download/velociraptor-linux-amd64 -O velociraptor
 chmod +x velociraptor
+
+```bash
+# Windows (64-bit - PowerShell)
+Invoke-WebRequest -Uri "https://github.com/VelociraptorApp/Velociraptor/releases/latest/download/velociraptor.exe" -OutFile "velociraptor.exe"
+
