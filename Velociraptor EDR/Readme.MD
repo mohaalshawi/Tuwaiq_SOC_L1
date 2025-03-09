@@ -57,14 +57,14 @@ on linux:
 ./velociraptor --config server.config.yaml debian server --binary velociraptor
 ```
 
-### 3️⃣ Start the Velociraptor Server
+### 4️⃣ Start the Velociraptor Server
 On Linux: 
 ```bash
 sudo dpkg -i velociraptor_server.deb
 sudo systemctl start velociraptor_server
 ```
 
-### 4️⃣ Access the Web Interface
+### 5️⃣ Access the Web Interface
 Once the server is running, access the web UI:
 
 
@@ -74,7 +74,7 @@ https://localhost:8889
 Use the credentials generated during the setup.
 
 
-### 5️⃣ Deploying Velociraptor Agents (Clients)
+### 6️⃣ Deploying Velociraptor Agents (Clients)
 To monitor endpoints, install the Velociraptor agent on target machines.
 
 Windows Agent Installation
