@@ -59,7 +59,7 @@ Use the credentials generated during the setup.
 To monitor endpoints, install the Velociraptor agent on target machines.
 
 Windows Agent Installation
-powershell```
+```powershell
 Invoke-WebRequest -Uri "https://github.com/Velocidex/velociraptor/releases/download/v0.73/velociraptor-v0.73.3-windows-amd64.exe" -OutFile "velociraptor.exe"
 .\velociraptor.exe --config client.config.yaml
 ```
