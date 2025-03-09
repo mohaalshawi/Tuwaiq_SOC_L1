@@ -21,7 +21,7 @@ Download the appropriate binary for your system:
 
 ```bash
 # Linux (64-bit)
-wget https://github.com/VelociraptorApp/Velociraptor/releases/latest/download/velociraptor-linux-amd64 -O velociraptor
+wget https://github.com/Velocidex/velociraptor/releases/download/v0.73/velociraptor-v0.73.2-linux-amd64 -O velociraptor
 chmod +x velociraptor
 ```
 
