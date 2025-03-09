@@ -25,7 +25,7 @@ wget https://github.com/VelociraptorApp/Velociraptor/releases/latest/download/ve
 chmod +x velociraptor
 ```
 
-2️⃣ Initialize the Velociraptor Configuration
+### 2️⃣ Initialize the Velociraptor Configuration
 Run the following command to generate the initial configuration:
 ```bash
 ./velociraptor config generate -i
