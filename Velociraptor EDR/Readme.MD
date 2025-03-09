@@ -49,9 +49,18 @@ On Linux:
 Once the server is running, access the web UI:
 
 
-4️⃣ Access the Web Interface
-Once the server is running, access the web UI:
 ```bash
 https://localhost:8889
 ```
 Use the credentials generated during the setup.
+
+
+5️⃣ Deploying Velociraptor Agents (Clients)
+To monitor endpoints, install the Velociraptor agent on target machines.
+
+Windows Agent Installation
+powershell```
+Invoke-WebRequest -Uri "https://github.com/Velocidex/velociraptor/releases/download/v0.73/velociraptor-v0.73.3-windows-amd64.exe" -OutFile "velociraptor.exe"
+.\velociraptor.exe --config client.config.yaml
+```
+
