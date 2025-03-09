@@ -49,3 +49,9 @@ On Linux:
 Once the server is running, access the web UI:
 
 
+4️⃣ Access the Web Interface
+Once the server is running, access the web UI:
+```bash
+https://localhost:8889
+```
+Use the credentials generated during the setup.
