@@ -48,8 +48,8 @@ Follow the interactive prompts to configure:
 - Set log directory to (opt/velociraptor/logs)
 - Select No
 - Save the configurations:
-+ Server Config: (server.config.yaml)
-+ Client Config: (client.config.yaml)
+  - Server Config: (server.config.yaml)
+  - Client Config: (client.config.yaml)
 
 ### 3️⃣ Create the server package
 on linux:  
