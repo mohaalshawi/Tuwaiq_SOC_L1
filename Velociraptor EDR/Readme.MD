@@ -60,8 +60,8 @@ on linux:
 ### 4️⃣ Start the Velociraptor Server
 On Linux: 
 ```bash
-chmod +x velociraptor_server.deb 
-sudo dpkg -i velociraptor_server.deb 
+chmod +x velociraptor_server_0.73.2_amd64.deb
+sudo dpkg -i velociraptor_server_0.73.2_amd64.deb
 sudo systemctl start velociraptor_server
 ```
 
