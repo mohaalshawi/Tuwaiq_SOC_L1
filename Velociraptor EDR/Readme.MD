@@ -48,6 +48,11 @@ Follow the interactive prompts to configure:
 - (server.config.yaml)
 - (client.config.yaml)
 
+### 3️⃣ Create the server package
+on linux:  
+```bash
+./velociraptor --config server.config.yaml debian server --binary velociraptor
+```
 
 ### 3️⃣ Start the Velociraptor Server
 On Linux: 
