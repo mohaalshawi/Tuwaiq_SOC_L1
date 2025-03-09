@@ -40,7 +40,7 @@ Follow the interactive prompts to configure:
 
 
 ### 3️⃣ Start the Velociraptor Server
-On Linux:
+On Linux: 
 bash```
 ./velociraptor --config server.config.yaml frontend
 ```
