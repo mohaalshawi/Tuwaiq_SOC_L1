@@ -22,9 +22,17 @@ Download the appropriate binary for your system:
 ```bash
 # Linux (64-bit)
 wget https://github.com/VelociraptorApp/Velociraptor/releases/latest/download/velociraptor-linux-amd64 -O velociraptor
-chmod +x velociraptor
+chmod +x velociraptor```
 
+2️⃣ Initialize the Velociraptor Configuration
+Run the following command to generate the initial configuration:
 ```bash
-# Windows (64-bit - PowerShell)
-Invoke-WebRequest -Uri "https://github.com/VelociraptorApp/Velociraptor/releases/latest/download/velociraptor.exe" -OutFile "velociraptor.exe"
+./velociraptor config generate -i```
+
+Follow the interactive prompts to configure:
+
+- Server or Client: Choose "Server" for a standalone setup
+- Hostname/IP: Enter the public IP or domain of your server
+- Certificates: Self-signed certificates will be generated
+- Data Storage: Choose a directory for storing logs and collected data
 
