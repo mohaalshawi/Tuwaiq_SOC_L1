@@ -60,7 +60,8 @@ on linux:
 ### 3️⃣ Start the Velociraptor Server
 On Linux: 
 ```bash
-sudo ./velociraptor --config server.config.yaml frontend
+sudo dpkg -i velociraptor_server.deb
+sudo systemctl start velociraptor_server
 ```
 
 ### 4️⃣ Access the Web Interface
