@@ -97,6 +97,11 @@ edit: client.config.yaml "  server_urls:
 
 
 ## 📚 Additional Resources
+
+## If Username and password are not working
+```bash
+sudo -u velociraptor velociraptor --config /etc/velociraptor/server.config.yaml user add admin --role administrator
+```
 📖 Official Documentation: https://docs.velociraptor.app/ <br>
 📢 Community Support: https://github.com/Velocidex/velociraptor
 ### 🚀 Congratulations! You’ve successfully installed Velociraptor EDR. 🎯
