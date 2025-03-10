@@ -15,7 +15,8 @@ Before installing Velociraptor, ensure you have the following:
 
 ### 1️⃣ **Download Velociraptor**  
 Visit the official Velociraptor GitHub releases page:  
-🔗 [https://github.com/VelociraptorApp/Velociraptor/releases](https://github.com/VelociraptorApp/Velociraptor/releases)  
+🔗 [https://github.com/Velocidex/velociraptor/releases/]
+(https://github.com/Velocidex/velociraptor/releases/)  
 
 Download the appropriate binary for your system:  
 
