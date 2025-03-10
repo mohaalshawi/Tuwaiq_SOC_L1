@@ -3,4 +3,4 @@ This repository contains all essential documents, installation guides, and relat
 
 
 ## 📂 Velociraptor EDR Documentation
-[Click here to access the Velociraptor EDR setup guide][(https://github.com/mohaalshawi/Tuwaiq_SOC_L1/blob/main/Velociraptor_EDR/Readme.MD)]
+[Click here to access the Velociraptor EDR setup guide](./Velociraptor_EDR/README.md)
