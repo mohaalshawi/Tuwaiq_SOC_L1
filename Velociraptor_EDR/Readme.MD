@@ -94,7 +94,7 @@ Invoke-WebRequest -Uri "https://github.com/Velocidex/velociraptor/releases/downl
 
 edit: client.config.yaml "  server_urls:
   - https://<Linux_Host_IP>:8000/"
-.\velociraptor.exe --config client.config.yaml
+.\velociraptor.exe service install --config client.config.yaml -v
 ```
 
 
