@@ -65,14 +65,7 @@ sudo systemctl start velociraptor_server
 sudo systemctl status velociraptor_server
 ```
 
-### 5️⃣ the service will show FAILURE=1
-folow the below to fix it
-```bash
-sudo mkdir -p /opt/velociraptor/logs
-sudo chown -R root:root /opt/velociraptor
-sudo chmod -R 777 /opt/velociraptor/logs
-sudo systemctl restart velociraptor_server
-```
+
 
 ### 6️⃣ Access the Web Interface
 Once the server is running, access the web UI:
@@ -105,5 +98,16 @@ edit: client.config.yaml "  server_urls:
 ```bash
 sudo -u velociraptor velociraptor --config /etc/velociraptor/server.config.yaml user add admin --role administrator
 ```
+
+### 5️⃣ the service will show FAILURE=1
+folow the below to fix it
+```bash
+sudo mkdir -p /opt/velociraptor/logs
+sudo chown -R root:root /opt/velociraptor
+sudo chmod -R 777 /opt/velociraptor/logs
+sudo systemctl restart velociraptor_server
+```
+
+
 📖 Official Documentation: https://docs.velociraptor.app/ <br>
 📢 Community Support: https://github.com/Velocidex/velociraptor
