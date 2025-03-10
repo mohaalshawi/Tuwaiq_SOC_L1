@@ -94,6 +94,8 @@ edit: client.config.yaml "  server_urls:
   - https://<Linux_Host_IP>:8000/"
 .\velociraptor.exe service install --config client.config.yaml -v
 ```
+# 🚀 Congratulations! You’ve successfully installed Velociraptor EDR. 🎯
+
 
 
 ## 📚 Additional Resources
@@ -104,4 +106,3 @@ sudo -u velociraptor velociraptor --config /etc/velociraptor/server.config.yaml 
 ```
 📖 Official Documentation: https://docs.velociraptor.app/ <br>
 📢 Community Support: https://github.com/Velocidex/velociraptor
-### 🚀 Congratulations! You’ve successfully installed Velociraptor EDR. 🎯
