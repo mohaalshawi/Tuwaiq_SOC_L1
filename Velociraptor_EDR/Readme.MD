@@ -41,7 +41,7 @@ Follow the interactive prompts to configure:
 - Enter (8889)
 - Select No
 - Select No
-- Choose a username and password
+- Choose a <b> strong </b> username and password
 - Select none
 - Set log directory to (opt/velociraptor/logs)
 - Select No
