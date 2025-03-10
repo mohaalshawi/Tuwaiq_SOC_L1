@@ -33,8 +33,6 @@ Run the following command to generate the initial configuration:
 
 Follow the interactive prompts to configure:
 
-Follow the interactive prompts to configure:
-
 - Select Linux
 - Press Enter
 - Choose Self-signed SSL
