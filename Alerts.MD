@@ -1,4 +1,4 @@
-bash```
+```bash
 1️⃣ Resolve Status:
 ➡️ TP / FP / NTP (True Positive / False Positive / Non-Threat Positive)
 
