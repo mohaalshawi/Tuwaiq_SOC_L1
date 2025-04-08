@@ -57,7 +57,7 @@ sudo /opt/splunkforwarder/bin/splunk add forward-server <Splunk_VM_IP>:9997
 ```
 confirm status
 ```
-/opt/splunkforwarder/bin/splunk list forward-server
+sudo /opt/splunkforwarder/bin/splunk list forward-server
 ```
 -----------
 ### Step 5: Choose Which Logs to Forward
