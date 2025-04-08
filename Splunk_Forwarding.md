@@ -63,7 +63,7 @@ confirm status
 ### Step 5: Choose Which Logs to Forward
 To monitor a log file or folder:
 ```
-sudo /opt/splunkforwarder/bin/splunk add monitor /var/log/dvwa      
+sudo /opt/splunkforwarder/bin/splunk add monitor /var/log/dvwa/access.log -sourcetype access_combined   
 ```
 ### 🔁 Step 6: Verify in Splunk Web
 In Splunk Web, search for incoming data:
