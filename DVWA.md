@@ -1,6 +1,23 @@
-# Fixing Kali Linux Update Issues & Installing DVWA
 
-## Step 1: Update the System
+### Step 1: Install DVWA
+```bash
+sudo apt install dvwa
+```
+
+### Step 2: Start DVWA
+Once installed, start DVWA using:
+```bash
+dvwa-start
+```
+
+You're now ready to use DVWA on Kali Linux! 🚀
+
+
+------------
+# IF IT DIDN'T RUN DO:
+## Fixing Kali Linux Update Issues & Installing DVWA
+
+### Step 3: Update the System
 Run the following command to update your package list:
 ```bash
 sudo apt update
@@ -20,18 +37,3 @@ sudo apt update
    ```bash
    sudo apt update
    ```
-
-## Step 2: Install DVWA
-If the update completes successfully, proceed with installing DVWA (Damn Vulnerable Web Application):
-
-```bash
-sudo apt install dvwa
-```
-
-## Step 3: Start DVWA
-Once installed, start DVWA using:
-```bash
-dvwa-start
-```
-
-You're now ready to use DVWA on Kali Linux! 🚀
