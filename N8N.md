@@ -1,9 +1,4 @@
-## Download docker for Windows
+## Download npm
 ```
-https://docs.docker.com/desktop/setup/install/windows-install/
-```
-
-### Download docker for Mac
-```
-https://docs.docker.com/desktop/setup/install/mac-install/
+https://nodejs.org/en/
 ```
